@@ -22,4 +22,5 @@ semilogy(snr, ber_1, snr, ber_2)
 legend('grey-code', 'alternative');
 xlabel('SNR [dB]');
 ylabel('BER');
+axis([min(snr) max(snr)]);
 grid on;
