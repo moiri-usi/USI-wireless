@@ -15,5 +15,11 @@ for n=1:length(snr),
     ber_2(n) = sum(xor(stream_in,stream_out_2))/length(stream_in);
 end
 
+% grey-code results in a better BER because if a symbol is in the wrong quadrant
+% only one bit is wrong. In case of the alternative encoding, a symbol in a
+% wrong quadrant may result in two wrong bits.
 semilogy(snr, ber_1, snr, ber_2)
+legend('grey-code', 'alternative');
+xlabel('SNR [dB]');
+ylabel('BER');
 grid on;
