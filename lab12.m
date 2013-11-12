@@ -1,9 +1,19 @@
-stream = randint(100);
+stream = randint(1000);
 stream_in = stream(:);
-symb = map(stream_in);
+symb_1 = map(stream_in, 1);
+symb_2 = map(stream_in, 0);
 
-symb_noise = awgn(symb,12);
+snr = [-6:0.5:12];
+for n=1:length(snr),
+    symb_noise_1 = awgn(symb_1,snr(n));
+    symb_noise_2 = awgn(symb_2,snr(n));
 
-stream_out = demap(symb_noise);
+    stream_out_1 = demap(symb_noise_1, 1);
+    stream_out_2 = demap(symb_noise_2, 0);
 
-ber = sum(xor(stream_in,stream_out))/length(stream_in);
+    ber_1(n) = sum(xor(stream_in,stream_out_1))/length(stream_in);
+    ber_2(n) = sum(xor(stream_in,stream_out_2))/length(stream_in);
+end
+
+semilogy(snr, ber_1, snr, ber_2)
+grid on;
