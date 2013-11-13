@@ -21,5 +21,5 @@ function [res] = rrcf (sig, tabs=5, T=0.001, roll_off=0.22, L=4)
 
     res = grrc_m*sig_m;
     res = res(:);
-    %res = conv(grrc, sig);
+    res = res(find(res,1,'first'):find(res,1,'last'));
 end
