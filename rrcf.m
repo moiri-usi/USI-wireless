@@ -1,4 +1,4 @@
-function [res] = rrcf (sig, tabs=5, T=0.1, roll_off=0.22)
+function [res] = rrcf (sig, tabs=5, T=0.001, roll_off=0.22)
     L = 4;
     sig_over = oversample(sig, L);
     grrc = rrc(tabs, T, roll_off);
