@@ -1,5 +1,5 @@
 L = 4;
-tabs = 100;
+tabs = 16;
 T = 0.001;
 roll_off=0.22;
 lambda = 30;
