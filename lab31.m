@@ -17,4 +17,5 @@ bit = demap(img);
 img_bit8 = reshape(bit, 8, [])';
 img_uint = uint8(bi2de(img_bit8));
 img_m = reshape(img_uint, [], img_size(1))';
+clf
 imshow(img_m);
