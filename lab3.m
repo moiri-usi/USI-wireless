@@ -4,7 +4,7 @@ T = 0.001;
 roll_off=0.22;
 lambda = 30;
 snr = inf;
-sig = load('r_image_3_2dB.mat');
+sig = load('r_image_3_10dB.mat');
 
 sig_conv_rcv = rrcf(sig.r, tabs, T, roll_off, L);
 sig_rcv = downsample(sig_conv_rcv, L);
