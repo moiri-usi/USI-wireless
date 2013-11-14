@@ -27,3 +27,5 @@ plot([0:maxTap], ones(maxTap+1, 1)*0.007, 'r')
 grid on
 xlabel('taps');
 ylabel('BER');
+
+% a total number of taps of 12*2+1=25 tabs is enough to get a BER<0.007
