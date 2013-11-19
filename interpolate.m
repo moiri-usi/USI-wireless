@@ -5,7 +5,6 @@ function [res] = interpolate(sig, epsilon, int_type)
     % cubic: if 0, use linear interpolation, else cubic interpolation
     % res: interpolated signal (synchronized)
     if strcmp(int_type, 'cubic')
-    %if int_type == 1
         % cubic interpolation
         epsilon = epsilon(1:length(sig));
         sig = [0; sig; 0; 0];
@@ -21,7 +20,6 @@ function [res] = interpolate(sig, epsilon, int_type)
             + m(4,4)*sig(4:end);
         res = a.*epsilon.^3 + b.*epsilon.^2 + c.*epsilon + d;
     else if strcmp(int_type, 'linear')
-    %else if int_type == 0
         % linear interpolation
         epsilon = epsilon(1:length(sig) - 1);
         res = (1.-epsilon).*sig(1:end-1) + epsilon.*sig(2:end);
