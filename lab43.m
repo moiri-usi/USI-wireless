@@ -27,7 +27,7 @@ img_m = reshape(img_uint, [], img_size(1))';
 
 clf;
 subplot(3,1,1);
-imshow(img_m);
+imageview(img_m);
 
 %%%%%%%%%%% interpolate linear %%%%%%%%%%%%%%%%%
 sig_up_sync = interpolate(sig_up_rcv, epsilon, 'linear');
@@ -46,7 +46,7 @@ img_uint = uint8(bi2de(img_bit8));
 img_m = reshape(img_uint, [], img_size(1))';
 
 subplot(3,1,2);
-imshow(img_m);
+imageview(img_m);
 
 %%%%%%%%%%% interpolate cubic %%%%%%%%%%%%%%%%%
 sig_up_sync = interpolate(sig_up_rcv, epsilon, 'cubic');
@@ -67,4 +67,4 @@ img_uint = uint8(bi2de(img_bit8));
 img_m = reshape(img_uint, [], img_size(1))';
 
 subplot(3,1,3);
-imshow(img_m);
+imageview(img_m);

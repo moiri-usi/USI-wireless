@@ -2,7 +2,7 @@ taps = 20;
 T = 1;
 roll_off = 0.22;
 L = 4;
-%Nc = 100; % usi if epsilon changes in time
+%Nc = 100; % use if epsilon changes in time
 Nc = inf; % use if epsilon is constant
 lambda = 30;
 demap_table = [1 0; 1 1; 0 1; 0 0];
@@ -27,7 +27,7 @@ img_m = reshape(img_uint, [], img_size(1))';
 
 clf;
 subplot(2,1,1);
-imshow(img_m);
+imageview(img_m);
 
 %%%%%%%%%%% interpolate linear %%%%%%%%%%%%%%%%%
 sig_up_sync = interpolate(sig_up_rcv, epsilon, 'linear');
@@ -46,4 +46,4 @@ img_uint = uint8(bi2de(img_bit8));
 img_m = reshape(img_uint, [], img_size(1))';
 
 subplot(2,1,2);
-imshow(img_m);
+imageview(img_m);
