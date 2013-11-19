@@ -20,7 +20,8 @@ function [epsilon] = t_estimator(sig, Nc=inf)
             [zeros(1,Nc), cumsum(sig_sum4(1:length(sig_sum4)-Nc))];
     end
     epsilon = (-1/(2*pi)*angle(roll_sum))';
+    % calculate epsilon with respect to the base sample
     epsilon = sign(epsilon).*L.*mod(abs(epsilon), 1/L);
-    %epsilon = sign(epsilon).*L.*(abs(epsilon).-floor(abs(epsilon)*L)/L);
+    % one epsilon for four samples
     epsilon = reshape(repmat(epsilon, 1, L)', [], 1);
 end
