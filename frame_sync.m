@@ -8,7 +8,7 @@ function [res res2] = frame_sync(sig, lambda)
     pinit = [1 1 1 1 1 1 1 1];
     Np = 200;
 
-    p = lfsr(pf, pinit, Np, 1);
+    p = lfsr(pf, pinit, Np);
 
     p(p == 1) = -1;
     p(p == 0) = 1;

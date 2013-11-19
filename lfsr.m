@@ -1,4 +1,4 @@
-function [res] = lfsr (polynom, reg, Np, inversed=0)
+function [res] = lfsr (polynom, reg, Np)
     mask = polynom(2:end);
     out = [];
 
@@ -7,8 +7,5 @@ function [res] = lfsr (polynom, reg, Np, inversed=0)
         out = [reg(end) out];
         reg = [out_bit reg(1:end-1)];
     end
-    if inversed == 1,
-        out = fliplr(out);
-    end
-    res = out;
+    res = fliplr(out);
 end
