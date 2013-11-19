@@ -1,4 +1,4 @@
-function [epsilon] = t_estimator(sig, Nc=inf)
+function [epsilon] = t_estimator(sig, Nc)
     % calculates an estimation of the time delay in the signal
     % sig: input signal
     % Nc: defines the length of the window, if Nc=inf, the window size is equal
@@ -13,9 +13,9 @@ function [epsilon] = t_estimator(sig, Nc=inf)
     seq_p = repmat(seq, length(sig_p)/L, 1);
     sig_prod = seq_p.*sig_p;
     sig_sum4 = sum(reshape(sig_prod, L, []));
-    if ((Nc == inf) || (Nc > length(sig_sum4))),
+    if ((Nc == inf) || (Nc > length(sig_sum4)))
         roll_sum = cumsum(sig_sum4);
-    else,
+    else
         roll_sum = cumsum(sig_sum4) - ...
             [zeros(1,Nc), cumsum(sig_sum4(1:length(sig_sum4)-Nc))];
     end

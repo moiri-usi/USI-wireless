@@ -4,6 +4,7 @@ roll_off=0.22;
 lambda = 30;
 maxTap = 32;
 maxStep = maxTap/L;
+demap_table = [1 0; 1 1; 0 1; 0 0];
 ber = zeros(maxStep, 1);
 for n=1:maxStep,
     tabs = n*L;
@@ -16,15 +17,15 @@ for n=1:maxStep,
     img_size = sig.image_size;
     img = sig_rcv(start_point:start_point+img_size(1)*img_size(2)*4-1);
 
-    bit = demap(img);
+    bit = demap(img, demap_table);
     ber(n) = sum(xor(bit, sig.ber_pn_seq))/length(bit);
 end
 
-clf
-stem([L:L:maxTap],ber)
-hold on
-plot([0:maxTap], ones(maxTap+1, 1)*0.007, 'r')
-grid on
+clf;
+stem([L:L:maxTap], ber);
+hold on;
+plot([0:maxTap], ones(maxTap+1, 1)*0.007, 'r');
+grid on;
 xlabel('taps');
 ylabel('BER');
 
